@@ -1,13 +1,242 @@
-body {
+:root {
+  --orange: #f56b2a;
+  --black: #1a1a1a;
+  --blue: #4183d7;
+  --white: #fafafa;
+  --grey: #474747;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+button {
+  background-color: transparent;
+  color: inherit;
+  border-width: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+}
+html {
+  font-size: 62.5%; /*for using REM units*/
+  height: 100%;
+}
+body {
+  height: 100%;
+  font-size: 1.6rem;
+  color: var(--black);
+  margin: 0;
+  line-height: 1.4;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.wrapper {
+  max-width: 1440px;
+  padding: 3rem 16rem;
+}
+
+#root,
+.App {
+  height: inherit;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 4.5rem;
+  letter-spacing: 0.124rem;
+}
+h2 {
+  font-size: 3.2rem;
+  letter-spacing: 0.085rem;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.header-container,
+.posts-container,
+.product-container,
+.footer-container {
+  display: flex;
+}
+
+header {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.header-container {
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.menu-link {
+  margin-left: 3rem;
+  font-size: 1.72rem;
+  font-weight: 700;
+}
+
+.menu-left > span {
+  text-transform: uppercase;
+}
+
+.menu-logo {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+header > img {
+  width: 162px;
+  height: auto;
+}
+
+.post-item {
+  display: flex;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+.post-item--placeholder,
+.post-item--picture {
+  width: 180px;
+  height: 180px;
+  background-color: #f2f2f2;
+}
+
+.post-item--picture {
+  object-fit: cover;
+}
+
+.post-item--infos {
+  margin-left: 2rem;
+}
+
+.post-item--title {
+  color: var(--blue);
+}
+
+.product-container {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.product-price,
+.post-item--price {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.product-infos {
+  width: 50%;
+}
+
+.product-card {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+}
+
+.product-placeholder {
+  width: auto;
+  height: 240px;
+  background-color: var(--grey);
+}
+
+.product-title {
+  color: var(--black);
+  padding: 2rem;
+  font-size: 2rem;
+  text-transform: inherit;
+}
+
+.product-price {
+  padding: 2rem;
+}
+
+.product-creator {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  margin-left: 2rem;
+}
+
+.product-username {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-item {
+  margin-left: 1rem;
+  padding: 0.615rem;
+  border-radius: 4px;
+  color: var(--blue);
+  font-size: 1.6rem;
+}
+
+.pagination-item.selected {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.footer {
+  background-color: var(--grey);
+  color: var(--white);
 }

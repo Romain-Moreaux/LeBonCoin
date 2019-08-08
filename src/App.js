@@ -1,16 +1,14 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 // Components
+import Header from "./Header";
 import Offers from "./Offers";
 import Product from "./Product";
+import SignUp from "./SignUp";
+import LogIn from "./LogIn";
 
 const GET_OFFERS = "https://leboncoin-api.herokuapp.com/api/offer/with-count";
 const GET_PRODUCT = " https://leboncoin-api.herokuapp.com/api/offer";
@@ -23,7 +21,34 @@ class App extends React.Component {
     page: 1,
     totalPage: null,
     limit: 25,
-    skip: 0
+    skip: 0,
+    user: {
+      token: Cookies.get("token") || "",
+      username: Cookies.get("username") || "",
+      _id: Cookies.get("_id") || ""
+    }
+  };
+
+  logIn = user => {
+    Cookies.set("token", user.token);
+    Cookies.set("username", user.username);
+    Cookies.set("_id", user._id);
+
+    this.setState({ user: user });
+  };
+
+  logOut = () => {
+    Cookies.remove("token");
+    Cookies.remove("username");
+    Cookies.remove("_id");
+
+    this.setState({
+      user: {
+        token: "",
+        username: "",
+        _id: ""
+      }
+    });
   };
 
   renderPagination() {
@@ -110,23 +135,11 @@ class App extends React.Component {
 
   render() {
     console.log(this.state);
-
+    const { user } = this.state;
     return (
       <Router>
         <div className="App">
-          <header className="header">
-            <div className="wrapper header-container">
-              <div className="menu-left">
-                <span className="menu-logo">LeBonCoin</span>
-                <span className="menu-link">déposer une annonce</span>
-                <span className="menu-link">offres</span>
-              </div>
-              <div className="menu-right">
-                <span className="menu-link">créer un compte</span>
-                <span className="menu-link">se connecter</span>
-              </div>
-            </div>
-          </header>
+          <Header user={user} logOut={this.logOut} />
           <Route
             exact
             path="/"
@@ -157,6 +170,18 @@ class App extends React.Component {
                   </div>
                 </section>
               </React.Fragment>
+            )}
+          />
+          <Route
+            path="/sign_up"
+            render={props => (
+              <SignUp {...props} user={user} logIn={this.logIn} />
+            )}
+          />
+          <Route
+            path="/log_in"
+            render={props => (
+              <LogIn {...props} user={user} logIn={this.logIn} />
             )}
           />
         </div>

@@ -103,6 +103,7 @@ h2 {
 .header-container,
 .posts-container,
 .product-container,
+.sign-up-container,
 .footer-container {
   display: flex;
 }
@@ -234,6 +235,111 @@ header > img {
 .pagination-item.selected {
   background-color: var(--orange);
   color: var(--white);
+}
+
+/* .sign-up-container {
+  background-color: var(--white);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+} */
+
+.sign-up .box-right,
+.sign-up .box-left {
+  width: 50%;
+}
+
+.sign-up .box-right {
+  margin-left: 3rem;
+}
+
+.login h1,
+.sign-up .box-right h2,
+.sign-up .box-left h1 {
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+.line-icon {
+  width: 25%;
+}
+
+.line-icon > img {
+  max-width: 100%;
+  height: 75px;
+}
+
+.line-infos {
+  width: 75%;
+}
+
+.line-infos > p {
+  margin-top: 2rem;
+}
+
+.login h1,
+.sign-up .box-right h2 {
+  text-align: center;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--orange);
+}
+
+.input-username,
+.input-email,
+.input-password,
+.input-confirm {
+  display: flex;
+  flex-direction: column;
+}
+
+.login input,
+.box-right input {
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  height: 40px;
+  padding-left: 1.6rem;
+}
+
+.login button,
+.box-right button {
+  width: 100%;
+  color: var(--white);
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--blue);
+  border: 1px solid var(--blue);
+  height: 40px;
+  border-radius: 4px;
+}
+
+.login form > div,
+.box-right form > div {
+  margin-bottom: 2rem;
+}
+
+.login-container {
+  max-width: 70%;
+  margin: auto;
+}
+.login form {
+  padding: 0 3rem;
+}
+
+.no-account {
+  padding: 3rem;
+  text-align: center;
+  border-top: 1px solid var(--grey);
+  margin-top: 3rem;
+}
+
+.no-account > button {
+  background-color: var(--white);
+  color: var(--blue);
+  margin-top: 2rem;
 }
 
 .footer {
